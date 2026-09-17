@@ -57,18 +57,20 @@ with open('summary.txt', mode='w', encoding='utf-8') as summary_file:
     summary_file.write(f"Highest Single Order: ${highest_single_order:,.2f}\n")
     summary_file.write(f"Rejected Rows: {rejected_rows_count}\n")
 # --- Write Rejections to rejected.csv ---
+# --- Write Rejections to rejected.csv ---
 
 # Open rejected.csv in write mode
 with open('rejected.csv', mode='w', newline='', encoding='utf-8') as rejected_file:
     csv_writer = csv.writer(rejected_file)
-    
+
     # Write a clean, flat header row
     csv_writer.writerow(['Line Number', 'Order ID', 'Customer', 'Item', 'Qty', 'Price', 'Reason'])
-    
+
     # Loop through the rejected collection
     for line_num, original_row, reason in rejected:
-        # Unpack the original row parts so they match the individual columns
-        order_id, customer, item, qty, price = original_row
-        
-        # Combine everything into one single row to write out
-        csv_writer.writerow([line_num, order_id, customer, item, qty, price, reason])
+        # Write the rejected row
+        csv_writer.writerow([line_num] + original_row + [reason])
+
+
+
+   
