@@ -1,0 +1,5 @@
+Total Revenue: $48,016.30
+Valid Orders: 182
+Unique Customers: 171
+Highest Single Order: $1,377.00
+Rejected Rows: 18
